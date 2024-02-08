@@ -11,10 +11,17 @@ COPY ./ ./
 # Install dependencies
 RUN npm install
 
-# temp halt Build the React app command - "RUN npm run build"
+# Build the React app
+RUN npm run build
 
-# Expose the port your React app runs on in the container
-EXPOSE 3003
+# Stage 2 - Production Environment
+FROM nginx:alpine
 
-# Command to run the React app
-CMD ["npm", "start"]
+# Copy build output from the previous stage
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expose port 80 to the outside world
+EXPOSE 80
+
+# Command to run NGINX
+CMD ["nginx", "-g", "daemon off;"]
