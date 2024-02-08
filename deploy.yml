@@ -17,4 +17,4 @@ spec:
         image: kalyanproject.azurecr.io/demoreact:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 3003
+        - containerPort: 80
