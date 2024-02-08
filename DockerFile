@@ -1,10 +1,10 @@
-# Use an official Node.js runtime as the base image
+# Use an official Node.js runtime as the base image- this is latest Alpine
 FROM node:18-alpine
 
 # Set the working directory in the container
 WORKDIR /app/
 
-# Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json to the working directory - "app" is the working directory
 COPY public/ /app/public
 COPY src/ /app/src
 COPY package.json /app/
