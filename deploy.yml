@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactsite-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactsite
+  template:
+    metadata:
+      labels:
+        app: reactsite
+    spec:
+      containers:
+      - name: reactsite
+        image: kalyanproject.azurecr.io/demoreact:latest
+        ports:
+        - containerPort: 3000
