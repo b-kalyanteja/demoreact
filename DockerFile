@@ -1,19 +1,22 @@
 # Use an official Node.js runtime as the base image- this is latest Alpine
-FROM node:18-alpine
+FROM node:alpine
 
 # Set the working directory in the container
-WORKDIR /app/
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory - "app" is the working directory
-COPY public/ /app/public
-COPY src/ /app/src
-COPY package.json /app/
+COPY package.json ./
+COPY ./ ./
 
 # Install dependencies
 RUN npm install
 
+# Build the React app
+RUN npm run build
+
 # Expose the port your React app runs on in the container
 EXPOSE 3000
+EXPOSE 80
 
 # Command to run the React app
 CMD ["npm", "start"]
