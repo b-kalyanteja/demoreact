@@ -12,7 +12,6 @@ COPY package.json /app/
 # Install dependencies
 RUN npm install
 
-
 # Expose the port your React app runs on
 EXPOSE 3000
 
